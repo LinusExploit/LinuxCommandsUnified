@@ -1,89 +1,91 @@
-1) Directory space utility [du]
-
-du -h                                   ** -h, --human-readable  print sizes in human readable format (e.g., 1K 234M 2G)
-du  -sh * | sort -nr                    ** Sort folder by sizes
-du -sch /*                              ** The sort I used many times and tired it.
-du --max-depth=1 -hx /                  ** very handy one
-                                        ** -d, --max-depth=N => Just go down one level from / and sum up everything recursively underneath in the tree.
-                                        ** -x, --one-file-system  => skip directories on different file systems Stay on one filesystem; don't look at directories that are not on the / partition. In this case that means ignore:
-                                          /dev /proc /run /sys
-
-2) Debian package Manager
-dpkg --list                             ** list installed packages
-apt-get                                 ** debian
-apt-get update                          ** synchronize the package index files with remote repositories
-apt-get upgrade                         ** actual upgrade
-apt-get upgrade bash                    **upgrade the bash package             // apt-get install -only-upgrade=bash
+[ du ]
 
 
-                                        ** Search packages
+du -h                                                                           ** -h, --human-readable  print sizes in human readable format (e.g., 1K 234M 2G)
+du  -sh * | sort -nr                                                            ** Sort folder by sizes
+du -sch /*                                                                      ** The sort I used many times and tired it.
+du --max-depth=1 -hx /                                                          ** very handy one
+                                                                                ** -d, --max-depth=N => Just go down one level from / and sum up everything recursively underneath in the tree.
+                                                                                ** -x, --one-file-system  => skip directories on different file systems Stay on one filesystem; don't look at directories that are not on the / partition. In this case that means ignore:
+                                                                                /dev /proc /run /sys
+
+[ dpkg ]
+
+dpkg --list                                                                     ** list installed packages
+apt-get                                                                         ** debian
+apt-get update                                                                  ** synchronize the package index files with remote repositories
+apt-get upgrade                                                                 ** actual upgrade
+apt-get upgrade bash                                                            **upgrade the bash package , apt-get install -only-upgrade=bash
+
+
+                                                                                ** Search packages
 apt-cache search "kernel"
-apt-cache search -n "kernel"            ** Installed and available
-apt-cache pkgnames "kernel"             ** Second and third gets packages  that only have kernel in their names.
+apt-cache search -n "kernel"                                                    ** Installed and available
+apt-cache pkgnames "kernel"                                                     ** Second and third gets packages  that only have kernel in their names.
 
-apt-get install apache2-dev             ** Install a package
-sudo dpkg -i /path/to/deb/file          ** Install from a deb file
-apt-cache show bash                     ** Show package information
-apt-cache depends bash                  ** Dependencies of a package
-apt-cache rdepends bash                 ** Reverse Dependencies of a package
-apt-cache search metapackage            ** Search meta packages
-dpkg -l open-vm-tools                   ** Query a package
-apt-get install --only-upgrade [package name]       ** Only upgrade
+apt-get install apache2-dev                                                     ** Install a package
+sudo dpkg -i /path/to/deb/file                                                  ** Install from a deb file
+apt-cache show bash                                                             ** Show package information
+apt-cache depends bash                                                          ** Dependencies of a package
+apt-cache rdepends bash                                                         ** Reverse Dependencies of a package
+apt-cache search metapackage                                                    ** Search meta packages
+dpkg -l open-vm-tools                                                           ** Query a package
+apt-get install --only-upgrade [package name]                                   ** Only upgrade
 sudo apt-get install -f
-sudo apt-get --purge remove nameofprogram           ** Remove a package
-sudo apt-get autoremove                             ** Remove dependencies after deleting a package
+sudo apt-get --purge remove nameofprogram                                       ** Remove a package
+sudo apt-get autoremove                                                         ** Remove dependencies after deleting a package
 
 
 
 
 
-3) Count the number of occuernces per line
-uniq -c
+[ uniq ]
+uniq -c                                                                         ** count per line
 
 [ grep/egrep ]
 grep [options] pattern [file]
 
-**Extract the exact match.
+                                                                                **Extract the exact match.
 
-grep -o // extract only the parts that matches the pattern from the line and not the entire line.
+grep -o                                                                         **Extract only the parts that matches the pattern from the line and not the entire line.
 
-Example to extract links for a an html page
+                                                                                **Example to extract links for a an html page
     grep -o 'http://[^"]*' | cut -d "/" -f 3
 
-**More flavors
+                                                                                **More flavors
 
-grep -v // this ouputs the lines not matching the pattern
-grep -n // Finds the line number where you have the match
-grep -c // counts the number of lines with matches
-grep -e // specify more than one matching pattern / use -e for each one
-grep // by default it uses unix style regular expressions.
-egrep // it uses POSIZ extended regular expressions.
+grep -v                                                                         ** this ouputs the lines not matching the pattern
+grep -n                                                                         ** Finds the line number where you have the match
+grep -c                                                                         ** counts the number of lines with matches
+grep -e                                                                         ** specify more than one matching pattern / use -e for each one
+                                                                                ** grep by default it uses unix style regular expressions.
+                                                                                ** egrep // it uses POSIZ extended regular expressions.
 
-** multiple matches
+                                                                                ** multiple matches
 grep -i -e "Mount count" -e "Check interval" -e "Block Count" dumpe2fs-output-initial
 
-** grep some text from all files in the current directory
+                                                                                ** grep some text from all files in the current directory
 grep -Ri DocumentRoot .             ** DocumentRoot is the text we are looking for.
 
-** it hurts
+                                                                                ** it hurts
 grep -R '$bigtree\["config"\]\["db"\]'
 find . -iname '*config*'            ** insensitive case match with wildcard matching
 
-** grep for config lines in a file
-grep -v '^#' /etc/ssh/sshd_config | uniq      ** anything that does not have # and eliminates duplicates
+                                                                                ** grep for config lines in a file
+grep -v '^#' /etc/ssh/sshd_config | uniq                                        ** anything that does not have # and eliminates duplicates
 cat squid.conf | grep -v ^\#| grep .
 
-** grep with regex aka egrep
+                                                                                ** grep with regex aka egrep
 grep -E
 
-** grep with surrounding text
-cat whatever | grep -A 10 -B 10 PATTERN       ** A for after and B for before [lines before and lines after]
+                                                                                ** grep with surrounding text
+cat whatever | grep -A 10 -B 10 PATTERN                                         ** A for after and B for before [lines before and lines after]
 
-** grep with regexes
+                                                                                ** grep with regexes
 .* matches any sequence of characters
 . matches an arbitrary character
 
-** force to look inside binary files
+                                                                                ** force to look inside binary files
 --binary-files=t
 
 
@@ -97,13 +99,14 @@ root@kali:~/sufference# nmap -F -A 10.11.1.136 | egrep '(\/tcp|Service Info)'
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 
-find the acl line with more numbers
+                                                                                **find the acl line with more numbers
 cat adwea-show-acl  | grep -oe  'line\s[0-9]\+' | uniq -c | sort -nr > result
 
 
-5) netstat command
+ [ netstat ]
+
 view listening sockets via netstat
-netstat -antp | grep sshd                     ** View socket opened by the SSH process on the machine.
+netstat -antp | grep sshd                                                       ** View socket opened by the SSH process on the machine.
 
 -a all
 -n show ip instead of host names
@@ -111,19 +114,18 @@ netstat -antp | grep sshd                     ** View socket opened by the SSH p
 -p show process id/name
 
 
-netstat -g                                    ** View multicast membership
-netstat -r                                    ** View routing table
-netstat -i                                    ** Kernel Interface table
-netstat -s                                    ** Per protocol statistics
-netstat --tcp                                 ** TCP statistics
-netstat --udp                                 ** UDP statistics
-netstat --raw                                 ** View raw sockets.
+netstat -g                                                                       ** View multicast membership
+netstat -r                                                                       ** View routing table
+netstat -i                                                                       ** Kernel Interface table
+netstat -s                                                                       ** Per protocol statistics
+netstat --tcp                                                                    ** TCP statistics
+netstat --udp                                                                    ** UDP statistics
+netstat --raw                                                                    ** View raw sockets.
 netstat -route
-netstat -M                                    ** Masquerdaing entries
+netstat -M                                                                       ** Masquerdaing entries
 
 
-6) list block devices and there ids
-blkid
+[ blkid ]
 
 Sample
 /dev/sda1: LABEL="Windows" UUID="FA50DCB150DC763B" TYPE="ntfs"
@@ -132,41 +134,41 @@ Sample
 /dev/sda7: UUID="088fd084-a011-4896-aa93-c0caaad60620" TYPE="swap"
 
 
-7) chroot
-chroot /mnt/mntdrive /bin/bash                ** Change the root directory from the resuce / live cd to the new mounted file system and start the bash shell
+[ chroot ]
+chroot /mnt/mntdrive /bin/bash                                                  ** Change the root directory from the resuce / live cd to the new mounted file system and start the bash shell
 
 
-8) tar archiving
+[ tar ]
 [malhyari fix this with tar documents]
 
 tar -xf file.name.tar -C /path/to/directory
-tar -zxvf file-name.tar.gz                                          ** Extract and decompress
-tar -zxvf file-name.tar.gz                                          ** Extract and decompress and keep same permissions
-tar -zxvf file-name.tar.gz [file-name]                              ** Extract and decompres one file only
-tar -ztvf file-name.tar.gz                                          ** List the files.
+tar -zxvf file-name.tar.gz                                                      ** Extract and decompress
+tar -zxvf file-name.tar.gz                                                      ** Extract and decompress and keep same permissions
+tar -zxvf file-name.tar.gz [file-name]                                          ** Extract and decompres one file only
+tar -ztvf file-name.tar.gz                                                      ** List the files.
 
 tar -cvf name.tar /path/to/directory.
-tar -zcvf name.tar.gz /path/to/directory                            ** Compression too in one command
-tar tvf data_backup.tar                                             ** Examine the content of the tar file
-gzip data_backup.tar                                                ** Compress the backup.tar file.
+tar -zcvf name.tar.gz /path/to/directory                                        ** Compression too in one command
+tar tvf data_backup.tar                                                         ** Examine the content of the tar file
+gzip data_backup.tar                                                            ** Compress the backup.tar file.
 
 
-                                                                    ** Creating an archive with compressions.
+                                                                                ** Creating an archive with compressions.
 
 tar zcvf source.tar.gz source
 tar jcvf source.tar.bz2 source
 tar Jcvf source.tar.xz source
 
 
-                                                                    ** Extracting archives
+                                                                                ** Extracting archives
 tar zxvf source.tar.gz
-tar jxvf source.tar.bz2                  << bzip
+tar jxvf source.tar.bz2                                                         **bzip
 tar Jxvf source.tar.xz
 
 
 
 tar function [options] object1 object2 ...
-function flags:
+                                                                                **function flags:
 -a Append an existing tar file to another existing tar archive file .
 -c create a new tar archive file.
 -d check the difference between a tar archive file and the file system.
@@ -183,7 +185,7 @@ function flags:
 
 
 
-                                                                    ** Easily accessible shortcuts
+                                                                                ** Easily accessible shortcuts
 
 $ tar mydir.tar mydir ; gzip mydir.tar
 $ gunzip mydir.tar.gz ; tar xvf mydir.tar
@@ -191,22 +193,25 @@ tar xvf mydir.tar.gz
 
 
 
-9) list processes running and using a specific port
+[ lsof ]
+                                                                                **list processes running and using a specific por
 lsof -i :22
-lsof  -i/-I                                                         ** List tcp and udp connections port usage
-                                                                    ** Then using the PID of the listening process
-lsof -p [pid]   // all files that are associated with that process
+lsof  -i/-I                                                                     ** List tcp and udp connections port usage
+                                                                                ** Then using the PID of the listening process
+lsof -p [pid]                                                                   ** all files that are associated with that process
 
-10) amount of free RAM
-free -h                                                             ** Human Readable format
 
-11) disk space utility
-df -h                                                               ** Human Readable format
 
-12) redirect error and output stream at the same time
-do_something 2>& all_output_file
+[ free ]
+free -h                                                                         ** Human Readable format
 
-13)important entries in /proc file system
+
+
+[ df ]
+df -h                                                                           ** Human Readable format
+
+
+[ proc file system ]
 /proc/cpuinfo
 /proc/meminfo
 /proc/mounts
@@ -215,69 +220,77 @@ do_something 2>& all_output_file
 /proc/partitions
 /proc/interrupts
 
-13) unzip files with unzip tool
+
+[ unzip ]
+
 unzip file-name -d <directory in which to put the files>
 
-zip sexy.zip *                                                    ** Create archives with zip command
+zip sexy.zip *                                                                  ** Create archives with zip command
 
 
-14) unrar files with unrar tool
+[ unrar ]
+
+unrar files with unrar tool
 unrar e  <file.rar>
 
 
-15) view processes and memory
+[ cpu memory check ]
+
 top
 htop
 
-16) rdp with xfreerdp tool
+
+
+[ xfreerdp ]
+                                                                                ** rdp with xfreerdp tool
 xfreerdp /v:ip-address-or-hostname  /u:cisco /p:cisco +clipboard /cert-ignore /f
 
 
-17) copy with scp
-scp <localfile> <user@remotesystem>:/home/user/                     ** Copy from local file to remote system
-scp -rp /opt/directory1 user@x.y.z.w:/opt/backup/directory1         ** Copy recursivly with directoy
+[ scp ]
+scp <localfile> <user@remotesystem>:/home/user/                                 ** Copy from local file to remote system
+scp -rp /opt/directory1 user@x.y.z.w:/opt/backup/directory1                     ** Copy recursivly with directoy
 
 
-18) Sort tool
-sort -n newfile                 ** sorts values in a file numerical
-sort -M newfile                 ** sorts values in a file using Months
-sort -k 3 -t : -n               ** -t specifies the separator and -k which field to sort
+[ sort ]
+sort -n newfile                                                                 ** sorts values in a file numerical
+sort -M newfile                                                                 ** sorts values in a file using Months
+sort -k 3 -t : -n                                                               ** -t specifies the separator and -k which field to sort
 
-19) Compressing data
+[ compression ]
 
-Utility:   bzip2              ext:.bz2            Burrows Wheeler block sorting text algorithm.
-           compress           ext:.Z              original unix file compression utility.
-           gzip :             ext :.gz            GNU project compression utility.Lempel Ziv algorithm.
-           zip                ext : .zip/         The unix version of PKZIP program for windows.
+Utility:   bzip2              ext:.bz2                                          **Burrows Wheeler block sorting text algorithm.
+           compress           ext:.Z                                            **original unix file compression utility.
+           gzip :             ext :.gz                                          **GNU project compression utility.Lempel Ziv algorithm.
+           zip                ext : .zip/                                       **The unix version of PKZIP program for windows.
 
-Gzip utility :
-gzip file-name-to-be-compressed                   ** gzip for compressing files only.
-gzcat                           ** Display the content of compressed text files.
-gunzip                          ** For uncompressing files .
+                                                                                **Gzip utility
+gzip file-name-to-be-compressed                                                   ** gzip for compressing files only.
+gzcat                                                                             ** Display the content of compressed text files.
+gunzip                                                                            ** For uncompressing files .
 
 
 
-20) Environemnt variables
-                                ** View environment variables
+[ Environemnt variables ]
+                                                                                ** View environment variables
 printenv
 env
 set
 export
 cat /etc/environment
 
-**Define a local user defined  variable :
-myvar=10                        ** Be careful as there are no spaces.
+                                                                                **Define a local user defined  variable :
+myvar=10                                                                          ** Be careful as there are no spaces.
 
-To view all variables including local variables use the command "set".
+                                                                                **To view all variables including local variables use the command "set".
 
-**Global environement variable
-export variable-name            ** Makes the variable global that is accessable from child shells.
-unset [variable-name]                   **To remove a variable
+                                                                                **Global environement variable
+export variable-name                                                            ** Makes the variable global that is accessable from child shells.
+unset [variable-name]                                                            **To remove a variable
 
-                                ** Directly with initialization :
+                                                                                ** Directly with initialization :
 x=10
 
-                                **Using the declare command :
+                                                                                **Using the declare command :
 
 declare: usage: declare [-aAfFgilnrtux] [-p] [name[=value] ...]
         -r readonly
@@ -286,20 +299,20 @@ declare: usage: declare [-aAfFgilnrtux] [-p] [name[=value] ...]
         -f function(s)
         -x export
 
-                              **change the proxy
+                                                                                **change the proxy
 export http_proxy="http://x.x.x.x:8080/"
 
 
 
 
-21) Linux Shells
+[ linux shells ]
 Q) How can we start a shell in linux ?
 a)As a default login shell at login time.
 b)As an interactive shell that is started by spawning a subshell.
 c)As a non-interactive shell to run a script.
 
 
-***Understanding the login shell process :
+                                                                                ***Understanding the login shell process :
 when you login into the system the bash shell starts a login shell. the login shell typically looks for 5 different startup
 files:
 /etc/profile    >> main file used by all users. The shell executes the commands in this script when you first login.
@@ -308,77 +321,63 @@ $HOME/.bashrc
 $HOME/.bash_login
 $HOME/.profile
 
-22) Sed
-sed -i '2d' ~/.ssh/known_hosts              ** deletes the second line from a text
-sed "1d"                                    ** removes the first line from a text
-                                            ** Replace the first line with some text
+[ sed ]
+sed -i '2d' ~/.ssh/known_hosts                                                  ** deletes the second line from a text
+sed "1d"                                                                        ** removes the first line from a text
+                                                                                ** Replace the first line with some text
 sed  "1s/.*/newtext/" file.txt
 sed  "1s/x//"
-                                            ** Replace slash with a space
+                                                                                ** Replace slash with a space
  cat shell | sed 's/\\/ /g'
 
-23) Restart Plasma [KDE 5]
+
+[ plasma ]
 kstart plasmashell
 
-24) Change MAC address
+[ mac change ]
 ifconfig wlan0 hw ether [MACaddr]
 
-25) Shows processes even those that are with very long command lines
-ps -auxwww
 
-26) Show the file acl on a specific file
-getfacl [filename]
-
-27) Add read permission for user lisa on the test
-setfacl test -m u:lisa:r
-
-28) Network manager CLI
-nmcli con                                                       ** Show all interfaces
-nmcli con show [conn name]                                      ** Show a specific connection properties
-                                                                ** UUID can be used instead of the name
-nmcli con modify [conn name] +ipv4.addresses 172.16.2.140/24
-nmcli con up [interface name]                                   ** Activate the interface
-nmcli con mod <connectionName> ipv4.dns "8.8.8.8 8.8.4.4"       ** Add dns server // conn name is the name of int can be found via nmcli conn
 
 
 [ bash shell ]
-                      ** Arethmetic Expressions
+                                                                                ** Arethmetic Expressions
 
 x=$((2+1))
-Var1=$[1+2]                                                     ** No spaces
+Var1=$[1+2]                                                                     ** No spaces
 Var2=$[$var1 * 2
-                                                                ** Using the let command
+                                                                                ** Using the let command
 let x=(1+2) or let x=1+4
 
 
 
-                                                                ** Generate a sequence of numbers
+                                                                                ** Generate a sequence of numbers
 seq 100 104
 
 
 
 
-                    ** IF Statement
+                                                                                ** IF Statement
 if condition
 then
        statements
 else
        statements
 fi
-                                                                **OR**
+                                                                                **OR**
 If command
         Then
             Commands
 Fi
 
-                                                                **OR**
+                                                                                **OR**
 
 If  command; then
         Commands
         Fi
 
 
-                                                              ** Nested if
+                                                                                ** Nested if
 
 If command1
         Then
@@ -390,9 +389,9 @@ If command1
 
 
 
-          ** Conditions
+                                                                                ** Conditions
 
-[ -e <filename> ]                       **File exists
+[ -e <filename> ]                                                               **File exists
 
 
 
@@ -401,9 +400,9 @@ if [ ! -f /usr/sbin/popularity-contest ]; then                                  
         exit 0
 fi
 
-                                        ** Check if value of number1 is gt than value of number2
+                                                                                ** Check if value of number1 is gt than value of number2
 [ $number1 -gt $number2 ]
-                                        ** Example
+                                                                                ** Example
 root@userver:~$ if [ -e dec.key ]; then
 > echo "file exists"
 > else
@@ -411,7 +410,7 @@ root@userver:~$ if [ -e dec.key ]; then
 > exit 1
 > fi
 
-                                        ** Numeric Comparison
+                                                                                ** Numeric Comparison
 [malhyari fix bash numeric comparison]
 N1 -eq N2
 N1 -ge N2
@@ -420,7 +419,7 @@ N1 -le N2
 N1 -lt N2
 N1 -ne N2
 
-                                      ** Strings Comparison
+                                                                                ** Strings Comparison
 str1=str2               #same
 Str1 != str2            #not the same
 Str1 < str2             # remember to escape special character
@@ -429,7 +428,9 @@ Str1 > str2
 -z str1                 # has a length of zero
 
 
-                                    ** Files Operations
+                                                                                ** Files Operations
+
+
 To be verified -n and -Z
 -d file                 #check if the file exists and is a directory.
 -e file                 # check if the file exists  // works for both files and directories
@@ -445,7 +446,7 @@ file1 -nt file2         # check if file1 is newer than file2
 File1 -ot file2         # check if file1 is older than file2
 
 
-                        ***Arrays
+                                                                                **Arrays
 
 commands=("$c1" "$c2" "$c3" "$c4" "$c5" "$c6" "$c7" "$c8" "$c9" "$c10")
 colours=(blue red white yellow)
@@ -462,13 +463,13 @@ i=$[$i+1]
 done
 
 
-                      ***Parentheseis
+                                                                                **Parentheseis
 Single Parenthesis - ( ... ) is creating a subshell
 Double Parenthesis - (( ... )) is for arithmetic operation
 Single Square Bracket - [ ... ] is the syntax for the POSIX test
 Double Square Brackets - [[ ... ]] is the syntax for bash conditional expressions (similar to test but more powerful // regexes )
 
-                      ***Case statement
+                                                                                **Case statement
 case "$1" in
 1)  echo "Sending SIGHUP signal"
     kill -SIGHUP $2
@@ -486,40 +487,40 @@ case "$1" in
    ;;
 Esac
 
-                    *** Bash For Loops
+                                                                                ** Bash For Loops
 for test in Alabama Alaska Arizona
 do
 echo the next state is $test
 done
-                              ** Very hot syntax
+                                                                                ** Very hot syntax
 -- C style loop for bash :
 for (( i=0;i<=100;i++))
 {
 // commands to be executed.
 
 
-                              ** Iterating over the content of a directory
+                                                                                ** Iterating over the content of a directory
 for file in /home/rich/test/*
 do
 If [ -d “$file” ]
 echo found a directory with the name $file
 done
 
-                              ** Redirecting the output of a for loop
+                                                                                ** Redirecting the output of a for loop
 for
 do
 done > output.tx
-                              ** iterate over a range
+                                                                                ** iterate over a range
 for i in {1001..1200}
 
-                              ** While loop
+                                                                                ** While loop
 var1=10
 while [ $var1 -gt 0 ]
 do
 echo $var1
 var1=$[var1 - 1]
 done
-                              **looping until we get a response for a ping
+                                                                                **looping until we get a response for a ping
 root@kali:~/priv-escalation-scripts# while true
 > do
 > ping -c 1 10.11.1.133
@@ -531,7 +532,7 @@ root@kali:~/priv-escalation-scripts# while true
 > done
 
 
-            *** Bash Functions
+                                                                                ** Bash Functions
             function_name () {
                    command...
                 }
@@ -542,7 +543,7 @@ root@kali:~/priv-escalation-scripts# while true
                 }
 
 
-                                                                                * Check if an argument was giveb to the bash script
+                                                                                ** Check if an argument was giveb to the bash script
 
 
                 if [ -z "$1" ]; then
@@ -553,7 +554,7 @@ root@kali:~/priv-escalation-scripts# while true
 
 
 
-37) Locate
+37) [ locate ]
 locate [name]
 updatedb << update locate database
 
@@ -561,15 +562,15 @@ updatedb << update locate database
 # find /home/user -perm 777 -exec rm '{}' +                                     *** Be careful with this command
 # find /etc -iname "*.conf" -mtime -180 -print
 # find . -maxdepth 3 -type f -size +2M
-#find / -name file 2>/dev/null                ** sends find standard error output to /dev/null
-#find / -type d -perm 777 2> /dev/null        ** look for directories with 777 permissions
-find / -perm -4000 2>/dev/null                            ** find files with setuid bit set
+#find / -name file 2>/dev/null                                                  ** sends find standard error output to /dev/null
+#find / -type d -perm 777 2> /dev/null                                          ** look for directories with 777 permissions
+find / -perm -4000 2>/dev/null                                                  ** find files with setuid bit set
 find . -perm /u=x,g=x,o=x
 
 find / -perm -u=s -type f 2>/dev/null                                           ** SUID (chmod 4000) - run as the owner, not the user who started it.
 
 
-                                              ** Find programs writable by a user bob
+                                                                                ** Find programs writable by a user bob
 find / \( -type f -or -type d \) \
   \( \
     \( -user bob  -perm -u=w \) -or \
@@ -579,7 +580,7 @@ find / \( -type f -or -type d \) \
   -print 2>/dev/null | grep -v -e otrs -e proc -e sys
 
 
-                                              ** Find programs writable by a user apache
+                                                                                ** Find programs writable by a user apache
 find / \( -type f -or -type d \) \
   \( \
     \( -user scriptmanager  -perm -u=w \) -or \
@@ -589,7 +590,7 @@ find / \( -type f -or -type d \) \
   -print 2>/dev/null | grep -v -e otrs -e proc -e sys
 
 
-                                              ** Find programs writable by a user www-data
+                                                                                ** Find programs writable by a user www-data
 find / \( -type f -or -type d \) \
   \( \
     \( -user www-data  -perm -u=w \) -or \
@@ -618,20 +619,20 @@ u : user
 g: group
 m: permissions
 
-                                          ** owned by the user
+                                                                                ** owned by the user
 find / -user scriptmanager -name "*" 2>/d>
 
-                                          ** execute a command on the file you find
+                                                                                ** execute a command on the file you find
 find /home -name .bashrc -exec grep [PATTERN] {} \;
 pentesterlab@4023d573c2b9:~$ find /home -name .bashrc -exec grep key  {} \;
-find /* -user root -perm -4000 -print 2>/dev/null     // find all suid owned by the root
+find /* -user root -perm -4000 -print 2>/dev/null                               ** find all suid owned by the root
 
 
 find /data/tmp  -name *.amp -type f -ctime +2  -exec rm -rf  {} \;
 sudo find /data/tmp  -name *.amp -type f -ctime +2  -exec ls  {} \;
 
 
-39) fstab
+[ fstab ]
 fstab layout for automatic persistent mounting by the operating system
 
 <file system> <mount point> <type> <options> <dump> <pass>
@@ -644,13 +645,12 @@ fstab layout for automatic persistent mounting by the operating system
 <pass>: This column specifies whether the integrity of the filesystem should be checked at boot time with fsck. A 0 means that fsck should not check a filesystem. The higher the number, the lowest the priority. Thus, the root partition will most likely have a value of 1, while all others that should be checked should have a value of 2.
 
 
-cat /etc/fstab                        ** view the content of the fstab file
-mount                                 ** view the current mounted file systems
-cat /proc/mounts                      ** view the mounts on the proc file system
+cat /etc/fstab                                                                  ** view the content of the fstab file
+mount                                                                           ** view the current mounted file systems
+cat /proc/mounts                                                                ** view the mounts on the proc file system
 
 
-40) Openssl [the swiss army of the crypto fans]
-
+[ openssl ]
 
 OpenSSL s_client --connect host-name:443 --servername asd.com
 OpenSSL x509 -in sub2.crt -text
@@ -760,9 +760,12 @@ ps $$                                                                           
                                                                                 ** $$ is a variable that evalutes to the current shell process
 
 
+ps -auxww                                                                       ** Shows processes even those that are with very long command lines
+
 
 
 [ Installing custom packages ]
+
 reloved directory for installing custom softwares is /opt
 [malhyari delete this one]
 
@@ -4416,6 +4419,8 @@ setfacl -x u:alex /mnt/temp                                                     
 
 
 
+27) Add read permission for user lisa on the test
+setfacl test -m u:lisa:r
 
 
 
@@ -5898,6 +5903,12 @@ strace -p $PID -f -e trace=network -s 10000
 [ nmcli ]
 
 
+nmcli con                                                                       ** Show all interfaces
+nmcli con show [conn name]                                                      ** Show a specific connection properties
+                                                                                ** UUID can be used instead of the name
+nmcli con modify [conn name] +ipv4.addresses 172.16.2.140/24
+nmcli con up [interface name]                                                   ** Activate the interface
+nmcli con mod <connectionName> ipv4.dns "8.8.8.8 8.8.4.4"                        ** Add dns server // conn name is the name of int can be found via nmcli conn
 nmcli  device connect ens33
 nmcli  device disconnect ens33
 
