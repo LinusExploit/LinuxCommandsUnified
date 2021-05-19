@@ -9,12 +9,12 @@ The file can be searched manually or using the finder.py draft script as shown i
 { du }
 
 
-du -h                                                                           ** -h, --human-readable  print sizes in human readable format (e.g., 1K 234M 2G)
-du  -sh * | sort -nr                                                            ** Sort folder by sizes
-du -sch /*                                                                      ** The sort I used many times and tired it.
-du --max-depth=1 -hx /                                                          ** very handy one
-                                                                                ** -d, --max-depth=N => Just go down one level from / and sum up everything recursively underneath in the tree.
+du -h                                                                           ** -h, --human-readable  print sizes in human readable format (e.g., 1K 234M 2G) <br/>
+du  -sh * | sort -nr                                                            ** Sort folder by sizes <br/> 
+du -sch /*                                                                      ** The sort I used many times and tired it. <br/>
+du --max-depth=1 -hx /                                                          ** very handy one<br/>
+                                                                                ** -d, --max-depth=N => Just go down one level from / and sum up everything recursively underneath in the tree. <br/>
                                                                                 ** -x, --one-file-system  => skip directories on different file systems Stay on one filesystem; don't look at directories that are not on the / partition. In this case that means ignore:
-                                                                                /dev /proc /run /sys
+                                                                                /dev /proc /run /sys <br/>
 
 
