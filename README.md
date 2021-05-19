@@ -5,7 +5,8 @@ This file is very useful for anyone who uses linux, anyone who prepares for LFCS
 
 The file can be searched manually or using the finder.py draft script as shown in the following example:
 
-└─$ ./finder.py du
+└─$ ./finder.py du 
+
 { du }
 
 
