@@ -2,7 +2,7 @@
 import re
 import sys 
 
-f = open('LinuxCommandsUnified-Braces.txt','r')
+f = open('LinuxCommandsUnified.text','r')
 all = f.read()
 
 search =  '{{ {} }}.*?{{.*?}}'.format(sys.argv[1])
