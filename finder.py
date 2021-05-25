@@ -10,7 +10,7 @@ print("(+)===========================================(+)")
 print("")
 print("")
 
-search =  '\[ {} \].*?\n\[ .*? \]\n'.format(sys.argv[1])
+search =  '\n\[ {} \].*?\n\[ .*? \]\n'.format(sys.argv[1])
 result =  re.findall(search, all, re.DOTALL)
 if result:
     print(result[0])

