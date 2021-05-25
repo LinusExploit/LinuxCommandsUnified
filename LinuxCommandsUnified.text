@@ -764,15 +764,6 @@ ps -auxww                                                                       
 
 
 
-[ Installing custom packages ]
-
-reloved directory for installing custom softwares is /opt
-[linus delete this one]
-
-add the installation path to your path variable
-add it to the end, if there is a binary conflict it will always choose original one.
-
-
 
 
 [ Cron Jobs ]
@@ -3883,8 +3874,10 @@ parted -l                                                                       
 
 
 [ fsck ]
+										** a utility used to check and repair Linux filesystems 
 
-
+fsck /dev/sda									** check a specific file system
+fsck -y /dev/sda6								** fix detected errors automatically 
 fsck -a
 fsck -p
 
