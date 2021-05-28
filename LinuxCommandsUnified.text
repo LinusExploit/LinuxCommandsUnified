@@ -2613,7 +2613,7 @@ iface eth0 inet static
 
 
 linus@ubuntuServer:~$ cat  /etc/netplan/01-netcfg.yaml                       ** ubuntu new style interface config
-
+									     ** new ubuntu releases are using netplan 
     # This file describes the network interfaces available on your system
     # For more information, see netplan(5).
     network:
@@ -2624,7 +2624,11 @@ linus@ubuntuServer:~$ cat  /etc/netplan/01-netcfg.yaml                       ** 
           dhcp4: no
           addresses: [10.48.60.181/24]
           gateway4: 10.48.60.1
-          nameservers: 144.254.71.184
+          nameservers: 
+	  	addresses: [144.254.71.184]
+
+netplan apply 								  ** apply the configuration
+
 
 [ centos static address ]
                                                                                 ** Configure centos with a static address
