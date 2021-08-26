@@ -7086,3 +7086,7 @@ apt update apt upgrade
                                                                                 ** python smb server one line
                                                                                 ** install the package Impacket
 # python smbserver.py ROPNOP /root/shells
+
+
+[ paste ]
+paste file1 file2  -d ","							# join two files by columns based on d 
