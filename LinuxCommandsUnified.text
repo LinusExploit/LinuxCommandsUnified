@@ -330,6 +330,10 @@ sed  "1s/x//"
                                                                                 ** Replace slash with a space
  cat shell | sed 's/\\/ /g'
 
+sed  -rn 's/([0-9]+).*([a-z]+)/\1 and \2 /p' 							** rn flag for extended regular expression usage 
+										** here we are matching any number of digits first and refer to it as \1
+										   we also match the second group and refer to it as \2
+
 
 [ plasma ]
 kstart plasmashell
