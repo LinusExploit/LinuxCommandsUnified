@@ -5332,21 +5332,26 @@ git config --global user.email you@example.com
 1) connect to github and create the new repository
 2) copy the repo url either ssh or https
 3) from cli navigate to the directory inside the project you wanna upload
-4) initialize via -> git init
+4) initialize via -> git init .
 5) add the files you wanna make inside the repo -> git add *
 6) commit the change -> git commit -m "initial version"
 7) add the repo url :
-git remote add origin  repro-url
-8) push changes to git hub
-git push -f origin master
+git remote add origin  git@github.com:[accountName]/repo-name.git
+8) git branch -M main
+9) push changes to git hub
+git push -u origin main
+
 
 
 
                                                                                 **Note:
-                                                                                **authenticatioin to github is just about creating a local ssh key and adding the public key part to your account.
+Adding SSH Keys :                                                                                **authenticatioin to github is just about creating a local ssh key and adding the public key part to your account.
 
-
-
+After you generate the key and install it on your github account 
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/key_name
+Test connection to github via SSH 
+After this you will not need to authenticate anymore. 
 
                                                                                 **!!!!!!!!!!!!!!!!!!!!!!!!!! Git Branching !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
